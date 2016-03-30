@@ -1,4 +1,4 @@
-var counter;
+var counter = 0;
 var turn = 0;
 var a1, a2, a3, b1, b2, b3, c1, c2, c3;
 var a;
@@ -14,17 +14,17 @@ newGame.addEventListener('click',function(event){
     if(turn === 0 && event.target.innerHTML === "" && xWins === false && oWins === false){
       event.target.innerHTML = 'X';
       turn = 1;
+      counter += 1;
       checkBoard();
       checkWin();
       getWinner();
-      counter += 1;
     } else if(turn === 1 && event.target.innerHTML === "" && xWins === false && oWins === false){
       event.target.innerHTML = 'O';
       turn = 0;
+      counter += 1;
       checkBoard();
       checkWin();
       getWinner();
-      counter += 1;
     }
   }
 });
@@ -69,9 +69,9 @@ var checkWin = function(){
           //console.log("O wins");
           oWins = true;
         }
-        else if(counter === 9){
-          tie = true;
-        }
+    else if(counter == 9){
+        tie = true;
+      }
 }
 
 var resetFunc = function(){
