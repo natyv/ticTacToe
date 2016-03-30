@@ -6,20 +6,29 @@ var newGame = document.querySelector(".game");
 var xWins = false;
 var oWins = false;
 var tie = false;
+var player1Wins = 0;
+var player2Wins = 0;
+
 
 newGame.addEventListener('click',function(event){
   //console.log(event);
   //console.log(event.target);
   if(event.target.className === "boxes"){
     if(turn === 0 && event.target.innerHTML === "" && xWins === false && oWins === false){
-      event.target.innerHTML = 'X';
+      //event.target.innerHTML = 'X';
+      to1 = document.getElementById("token1").value;
+      if (to1 === ""){tok1 = "X";} else {tok1 = to1;}
+      event.target.innerHTML = tok1;
       turn = 1;
       counter += 1;
       checkBoard();
       checkWin();
       getWinner();
     } else if(turn === 1 && event.target.innerHTML === "" && xWins === false && oWins === false){
-      event.target.innerHTML = 'O';
+      //event.target.innerHTML = 'O';
+      to2 = document.getElementById("token2").value;
+      if (to2 === ""){tok2 = "O";} else {tok2 = to2;}
+      event.target.innerHTML = tok2;
       turn = 0;
       counter += 1;
       checkBoard();
@@ -43,31 +52,36 @@ var checkBoard = function(){
 
 
 var checkWin = function(){
+  to1 = document.getElementById("token1").value;
+  if (to1 === ""){tok1 = "X";} else {tok1 = to1;}
+  to2 = document.getElementById("token2").value;
+  if (to2 === ""){tok2 = "O";} else {tok2 = to2;}
 
-  if ((a1 == a2 && a1 == a3 && (a1 == "X")) || //first row
-      (b1 == b2 && b1 == b3 && (b1 == "X")) || //second row
-      (c1 == c2 && c1 == c3 && (c1 == "X")) || //third row
-      (a1 == b1 && a1 == c1 && (a1 == "X")) || //first column
-      (a2 == b2 && a2 == c2 && (a2 == "X")) || //second column
-      (a3 == b3 && a3 == c3 && (a3 == "X")) || //third column
-      (a1 == b2 && a1 == c3 && (a1 == "X")) || //diagonal 1
-      (a3 == b2 && a3 == c1 && (a3 == "X"))    //diagonal 2
+  if ((a1 == a2 && a1 == a3 && (a1 == tok1)) || //first row
+      (b1 == b2 && b1 == b3 && (b1 == tok1)) || //second row
+      (c1 == c2 && c1 == c3 && (c1 == tok1)) || //third row
+      (a1 == b1 && a1 == c1 && (a1 == tok1)) || //first column
+      (a2 == b2 && a2 == c2 && (a2 == tok1)) || //second column
+      (a3 == b3 && a3 == c3 && (a3 == tok1)) || //third column
+      (a1 == b2 && a1 == c3 && (a1 == tok1)) || //diagonal 1
+      (a3 == b2 && a3 == c1 && (a3 == tok1))    //diagonal 2
     ) {
         //console.log("X wins");
         xWins = true;
+        player1Wins += 1;
       }
-
-  else if ((a1 == a2 && a1 == a3 && (a1 == "O")) || //first row
-      (b1 == b2 && b1 == b3 && (b1 == "O")) || //second row
-      (c1 == c2 && c1 == c3 && (c1 == "O")) || //third row
-      (a1 == b1 && a1 == c1 && (a1 == "O")) || //first column
-      (a2 == b2 && a2 == c2 && (a2 == "O")) || //second column
-      (a3 == b3 && a3 == c3 && (a3 == "O")) || //third column
-      (a1 == b2 && a1 == c3 && (a1 == "O")) || //diagonal 1
-      (a3 == b2 && a3 == c1 && (a3 == "O"))    //diagonal 2
+  else if ((a1 == a2 && a1 == a3 && (a1 == tok2)) || //first row
+      (b1 == b2 && b1 == b3 && (b1 == tok2)) || //second row
+      (c1 == c2 && c1 == c3 && (c1 == tok2)) || //third row
+      (a1 == b1 && a1 == c1 && (a1 == tok2)) || //first column
+      (a2 == b2 && a2 == c2 && (a2 == tok2)) || //second column
+      (a3 == b3 && a3 == c3 && (a3 == tok2)) || //third column
+      (a1 == b2 && a1 == c3 && (a1 == tok2)) || //diagonal 1
+      (a3 == b2 && a3 == c1 && (a3 == tok2))    //diagonal 2
       ) {
           //console.log("O wins");
           oWins = true;
+          player2Wins += 1;
         }
     else if(counter == 9){
         tie = true;
@@ -88,14 +102,23 @@ var resetFunc = function(){
   xWins = false;
   oWins = false;
   tie = false;
+  turn = 0;
   counter = 0;
+  document.getElementById("player1").value = "";
+  document.getElementById("player2").value = "";
+  document.getElementById("token1").value = "";
+  document.getElementById("token2").value = "";
 };
 
 var getWinner = function(){
   if(xWins === true){
-    document.querySelector("#winner").innerHTML = "X wins!";
+    play1 = document.getElementById("player1").value;
+    if (play1 === ""){play1 = "Player 1";}
+    document.querySelector("#winner").innerHTML = play1 + " wins!";
   } else if (oWins === true){
-    document.querySelector("#winner").innerHTML = "O wins!";
+    play2 = document.getElementById("player2").value;
+    if (play2 === ""){play2 = "Player 2";}
+    document.querySelector("#winner").innerHTML = play2 + " wins!";
   } else if (tie === true){
     document.querySelector("#winner").innerHTML = "Tie!";
   }
