@@ -2,16 +2,16 @@ body{
   margin: auto;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
-  background-image: url("bgs1.png");
 }
 
 .game-bg {
   height : 400px;
   width: 400px;
   margin: auto;
-  background-color: #0b2f5b;
+  background-color: #7ee1f6;
   display: inline-block;
   vertical-align: top;
+  box-shadow:2px 2px 10px 1px black;
 }
 
 .game{
@@ -25,7 +25,7 @@ body{
   height: 100px;
   width: 100px;
   display: inline-block;
-  background-color: #bfd9f7;
+  background-color: white;
   border: 1px solid black;
   margin: 0;
   vertical-align: top;
@@ -33,8 +33,9 @@ body{
   font-size: 30px;
 }
 
-.boxes:hover {
-  background-color: lightgreen;
+
+h2 {
+  color: #ff6080;
 }
 
 .row {
@@ -49,23 +50,21 @@ body{
 #winner{
   display: block;
   margin: 20px auto;
-  color: red;
+  color: #ff6080;
 }
 
 button {
   height: 40px;
   width: 100px;
   margin-bottom: 20px;
-  background-color: black;
-  color: white;
-}
-
-button:hover {
-  background-color: lightgreen;
+  background-color: #ff6080;
+  color: black;
+  font-weight: bold;
+  border: 1px solid black;
 }
 
 input {
-  border: 1px solid #c4c4c4;
+  border: 1px solid black;
   margin: auto;
   height: 25px;
   font-size: 13px;

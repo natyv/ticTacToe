@@ -53,6 +53,7 @@ newGame.addEventListener('click',function(event){
       to1 = document.getElementById("token1").value;
       if (to1 === ""){tok1 = "X";} else {tok1 = to1;}
       event.target.innerHTML = tok1;
+      event.target.style.backgroundColor = '#fdef64';
       turn = 1;
       counter += 1;
       checkBoard();
@@ -63,6 +64,7 @@ newGame.addEventListener('click',function(event){
       to2 = document.getElementById("token2").value;
       if (to2 === ""){tok2 = "O";} else {tok2 = to2;}
       event.target.innerHTML = tok2;
+      event.target.style.backgroundColor = '#b4f666';
       turn = 0;
       counter += 1;
       checkBoard();
@@ -127,15 +129,13 @@ var checkWin = function(){
 }
 
 var resetFunc = function(){
-  document.querySelector('#r00').textContent = "";
-  document.querySelector('#r01').textContent = "";
-  document.querySelector('#r02').textContent = "";
-  document.querySelector('#r10').textContent = "";
-  document.querySelector('#r11').textContent = "";
-  document.querySelector('#r12').textContent = "";
-  document.querySelector('#r20').textContent = "";
-  document.querySelector('#r21').textContent = "";
-  document.querySelector('#r22').textContent = "";
+
+  var boxesArr = document.querySelectorAll('.boxes');
+  for (var i = 0; i < boxesArr.length; i++) {
+    boxesArr[i].textContent = "";
+    boxesArr[i].style.backgroundColor = 'white';
+  }
+
   document.querySelector("#winner").innerHTML = "";
   xWins = false;
   oWins = false;
