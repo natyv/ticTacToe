@@ -3,7 +3,6 @@ body{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
   background-image: url("bgs1.png");
-  bac
 }
 
 .game-bg {
@@ -20,7 +19,6 @@ body{
   height: 80%;
   margin: auto;
   text-align: center;
-  /*position: relative;*/
 }
 
 .boxes {
@@ -33,7 +31,6 @@ body{
   vertical-align: top;
   line-height: 100px;
   font-size: 30px;
-
 }
 
 .boxes:hover {
@@ -52,6 +49,7 @@ body{
 #winner{
   display: block;
   margin: 20px auto;
+  color: red;
 }
 
 button {
@@ -93,10 +91,31 @@ h4{
   display: inline-block;
 }
 
-@media screen and (max-width: 550px){
+
+@media screen and (max-width: 360px){
   #p1 {
     display: block;
     width: 60%;
     margin: auto;
+  }
+  .game-bg {
+    width: 90%;
+    height: 90%;
+  }
+  .boxes {
+    width: 80px;
+    height: 80px;
+  }
+  .game {
+    padding-bottom: 10%;
+  }
+  input {
+    padding-bottom: 0px;
+  }
+  h4{
+    font-size: 5px;
+  }
+  button {
+    margin-bottom: 10px;
   }
 }

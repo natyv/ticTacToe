@@ -26,6 +26,8 @@ function renderBoard(){
   document.querySelector('#r20').innerHTML = c1;
   document.querySelector('#r21').innerHTML = c2;
   document.querySelector('#r22').innerHTML = c3;
+  document.querySelector('#score1').innerHTML = player1Wins;
+  document.querySelector('#score2').innerHTML = player2Wins;
 }
 function setBoard() {
   //console.log('I happen on page load');
@@ -41,14 +43,13 @@ function setBoard() {
   c2 = array[7];
   c3 = array[8];
   counter = Number(array[9]);
+  player1Wins = Number(array[10]);
+  player2Wins = Number(array[11]);
 }
 
 newGame.addEventListener('click',function(event){
-  //console.log(event);
-  //console.log(event.target);
   if(event.target.className === "boxes"){
     if(turn === 0 && event.target.innerHTML === "" && xWins === false && oWins === false){
-      //event.target.innerHTML = 'X';
       to1 = document.getElementById("token1").value;
       if (to1 === ""){tok1 = "X";} else {tok1 = to1;}
       event.target.innerHTML = tok1;
@@ -59,7 +60,6 @@ newGame.addEventListener('click',function(event){
       checkWin();
       getWinner();
     } else if(turn === 1 && event.target.innerHTML === "" && xWins === false && oWins === false){
-      //event.target.innerHTML = 'O';
       to2 = document.getElementById("token2").value;
       if (to2 === ""){tok2 = "O";} else {tok2 = to2;}
       event.target.innerHTML = tok2;
@@ -86,7 +86,7 @@ var checkBoard = function(){
 }
 
 function populateStorage() {
-  var arr = [a1, a2, a3, b1, b2, b3, c1, c2, c3, counter];
+  var arr = [a1, a2, a3, b1, b2, b3, c1, c2, c3, counter, player1Wins, player2Wins];
   var arrStr = JSON.stringify(arr);
   localStorage.setItem('board', arrStr);
 }
@@ -106,7 +106,6 @@ var checkWin = function(){
       (a1 == b2 && a1 == c3 && (a1 == tok1)) || //diagonal 1
       (a3 == b2 && a3 == c1 && (a3 == tok1))    //diagonal 2
     ) {
-        //console.log("X wins");
         xWins = true;
         player1Wins += 1;
       }
@@ -119,7 +118,6 @@ var checkWin = function(){
       (a1 == b2 && a1 == c3 && (a1 == tok2)) || //diagonal 1
       (a3 == b2 && a3 == c1 && (a3 == tok2))    //diagonal 2
       ) {
-          //console.log("O wins");
           oWins = true;
           player2Wins += 1;
         }
@@ -172,5 +170,3 @@ var getWinner = function(){
 
 var reset = document.querySelector('#resetBtn');
 reset.addEventListener('click',resetFunc);
-
-console.dir(localStorage);
