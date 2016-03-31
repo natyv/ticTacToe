@@ -9,6 +9,39 @@ var tie = false;
 var player1Wins = 0;
 var player2Wins = 0;
 
+if(!localStorage.getItem('board')) {
+  populateStorage();
+} else {
+  setBoard();
+  renderBoard();
+}
+function renderBoard(){
+  // gets values from javascript and inserts them into the DOM.
+  document.querySelector('#r00').innerHTML = a1;
+  document.querySelector('#r01').innerHTML = a2;
+  document.querySelector('#r02').innerHTML = a3;
+  document.querySelector('#r10').innerHTML = b1;
+  document.querySelector('#r11').innerHTML = b2;
+  document.querySelector('#r12').innerHTML = b3;
+  document.querySelector('#r20').innerHTML = c1;
+  document.querySelector('#r21').innerHTML = c2;
+  document.querySelector('#r22').innerHTML = c3;
+}
+function setBoard() {
+  //console.log('I happen on page load');
+  var array = JSON.parse(localStorage.getItem('board'));
+  //console.log(array);
+  a1 = array[0];
+  a2 = array[1];
+  a3 = array[2];
+  b1 = array[3];
+  b2 = array[4];
+  b3 = array[5];
+  c1 = array[6];
+  c2 = array[7];
+  c3 = array[8];
+  counter = Number(array[9]);
+}
 
 newGame.addEventListener('click',function(event){
   //console.log(event);
@@ -22,6 +55,7 @@ newGame.addEventListener('click',function(event){
       turn = 1;
       counter += 1;
       checkBoard();
+      populateStorage();
       checkWin();
       getWinner();
     } else if(turn === 1 && event.target.innerHTML === "" && xWins === false && oWins === false){
@@ -32,6 +66,7 @@ newGame.addEventListener('click',function(event){
       turn = 0;
       counter += 1;
       checkBoard();
+      populateStorage();
       checkWin();
       getWinner();
     }
@@ -50,6 +85,11 @@ var checkBoard = function(){
    c3 = document.querySelector('#r22').innerHTML;
 }
 
+function populateStorage() {
+  var arr = [a1, a2, a3, b1, b2, b3, c1, c2, c3, counter];
+  var arrStr = JSON.stringify(arr);
+  localStorage.setItem('board', arrStr);
+}
 
 var checkWin = function(){
   to1 = document.getElementById("token1").value;
@@ -108,6 +148,7 @@ var resetFunc = function(){
   document.getElementById("player2").value = "";
   document.getElementById("token1").value = "";
   document.getElementById("token2").value = "";
+  localStorage.clear();
 };
 
 var getWinner = function(){
@@ -116,15 +157,20 @@ var getWinner = function(){
     if (play1 === ""){play1 = "Player 1";}
     document.querySelector("#winner").innerHTML = play1 + " wins!";
     document.querySelector("#score1").innerHTML = player1Wins;
+    localStorage.clear();
   } else if (oWins === true){
     play2 = document.getElementById("player2").value;
     if (play2 === ""){play2 = "Player 2";}
     document.querySelector("#winner").innerHTML = play2 + " wins!";
     document.querySelector("#score2").innerHTML = player2Wins;
+    localStorage.clear();
   } else if (tie === true){
     document.querySelector("#winner").innerHTML = "Tie!";
+    localStorage.clear();
   }
 }
 
 var reset = document.querySelector('#resetBtn');
 reset.addEventListener('click',resetFunc);
+
+console.dir(localStorage);
