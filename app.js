@@ -115,10 +115,12 @@ var getWinner = function(){
     play1 = document.getElementById("player1").value;
     if (play1 === ""){play1 = "Player 1";}
     document.querySelector("#winner").innerHTML = play1 + " wins!";
+    document.querySelector("#score1").innerHTML = player1Wins;
   } else if (oWins === true){
     play2 = document.getElementById("player2").value;
     if (play2 === ""){play2 = "Player 2";}
     document.querySelector("#winner").innerHTML = play2 + " wins!";
+    document.querySelector("#score2").innerHTML = player2Wins;
   } else if (tie === true){
     document.querySelector("#winner").innerHTML = "Tie!";
   }

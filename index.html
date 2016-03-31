@@ -5,35 +5,53 @@
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" href="style.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
   <h1>TIC TAC TOE</h1>
 
-  <input type="text" id ="player1" placeholder="Player 1 name">
-  <input type="text" id ="player2" placeholder="Player 2 name">
-  <input type="text" id ="token1" placeholder="Token for Player 1">
-  <input type="text" id ="token2" placeholder="Token for Player 2">
+  <div id ="p1">
+    <input type="text" id ="player1" placeholder="Player 1 name">
+    <input type="text" id ="token1" placeholder="Token for Player 1">
+    <h4>Player1 Score: </h4>
+    <span id="score1"></span>
 
-  <div class = "game">
-    <div class = "row row1">
-      <div class = "boxes" id ="r00" ></div>
-      <div class = "boxes" id ="r01"></div>
-      <div class = "boxes" id ="r02"></div>
-    </div>
-    <div class = "row">
-      <div class = "boxes" id ="r10"></div>
-      <div class = "boxes" id ="r11"></div>
-      <div class = "boxes" id ="r12"></div>
-    </div>
-    <div class = "row">
-    <div class = "boxes" id ="r20"></div>
-    <div class = "boxes" id ="r21"></div>
-    <div class = "boxes" id ="r22"></div>
+    <input type="text" id ="player2" placeholder="Player 2 name">
+    <input type="text" id ="token2" placeholder="Token for Player 2">
+    <h4>Player2 Score : </h4>
+    <span id="score2"></span>
+
+    <div id = "winner"></div>
+
+    <button id="resetBtn">Reset</button>
+
+  </div>
+
+  <div class = "game-bg">
+    <div class = "game">
+      <div class = "row row1">
+        <div class = "boxes" id ="r00" ></div>
+        <div class = "boxes" id ="r01"></div>
+        <div class = "boxes" id ="r02"></div>
+      </div>
+      <div class = "row">
+        <div class = "boxes" id ="r10"></div>
+        <div class = "boxes" id ="r11"></div>
+        <div class = "boxes" id ="r12"></div>
+      </div>
+      <div class = "row">
+      <div class = "boxes" id ="r20"></div>
+      <div class = "boxes" id ="r21"></div>
+      <div class = "boxes" id ="r22"></div>
+      </div>
     </div>
   </div>
 
-  <div id = "winner"></div>
-  <button id="resetBtn">Reset</button>
+
+
+
+
 
 <script src ="app.js"></script>
 </body>
