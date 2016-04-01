@@ -12,6 +12,7 @@ The app
 * Switch turns between X and O (or whichever markers you select)
 * Visually displays which side has won 
 * Allows customization of Player names and Player tokens
+* Is responsive
 * Saves the game and game info of an incomplete game, even when the browser is closed and reopened
 
 Baby Steps
