@@ -26,13 +26,23 @@ function renderBoard(){
   document.querySelector('#r20').innerHTML = c1;
   document.querySelector('#r21').innerHTML = c2;
   document.querySelector('#r22').innerHTML = c3;
+
+  var boxesArr = document.querySelectorAll('.boxes');
+  for (var i = 0; i < boxesArr.length; i++) {
+    if(boxesArr[i].innerHTML === "X"){
+      boxesArr[i].style.backgroundColor = '#fdef64';
+    } else if (boxesArr[i].innerHTML === "O"){
+      boxesArr[i].style.backgroundColor = '#b4f666';
+    } else {
+    boxesArr[i].style.backgroundColor = 'white';
+    }
+  }
+
   document.querySelector('#score1').innerHTML = player1Wins;
   document.querySelector('#score2').innerHTML = player2Wins;
 }
 function setBoard() {
-  //console.log('I happen on page load');
   var array = JSON.parse(localStorage.getItem('board'));
-  //console.log(array);
   a1 = array[0];
   a2 = array[1];
   a3 = array[2];
