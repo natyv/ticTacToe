@@ -27,7 +27,7 @@ mid-game.
 
 The game does not have AI functionality, doesn't play against the computer. The biggest challenge was that I kept
 checking the online game page instead of my local working page and then wondering why it didn't reflect any of the
-changes I had made!
+changes I had made! And ofcourse, CSS is always a challenge! 
 
 The links for the repo and game are below:
 
